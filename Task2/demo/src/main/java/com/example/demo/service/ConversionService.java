@@ -75,14 +75,14 @@ public class ConversionService {
     }
 
     private void validateRequest(ConversionRequest request) {
-        // Validate category
+        
         try {
             Category.fromString(request.getCategory());
         } catch (IllegalArgumentException e) {
             throw new InvalidUnitException("Invalid category: " + request.getCategory());
         }
 
-        // Validate units belong to category
+    
         List<String> validUnits = getUnitsForCategory(request.getCategory());
         if (!validUnits.contains(request.getFromUnit().toLowerCase())) {
             throw new InvalidUnitException("Unit '" + request.getFromUnit() + "' does not belong to category '" + request.getCategory() + "'");
@@ -91,7 +91,7 @@ public class ConversionService {
             throw new InvalidUnitException("Unit '" + request.getToUnit() + "' does not belong to category '" + request.getCategory() + "'");
         }
 
-        // Validate non-negative values for weight and time
+        
         if ((request.getCategory().equalsIgnoreCase("weight") || request.getCategory().equalsIgnoreCase("time")) 
             && request.getValue() < 0) {
             throw new InvalidUnitException("Value cannot be negative for " + request.getCategory());
