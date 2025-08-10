@@ -16,7 +16,7 @@ public enum Category {
         return value;
     }
 
-    // This method is also needed
+    
     public static Category fromString(String value) {
         for (Category category : Category.values()) {
             if (category.value.equalsIgnoreCase(value)) {
