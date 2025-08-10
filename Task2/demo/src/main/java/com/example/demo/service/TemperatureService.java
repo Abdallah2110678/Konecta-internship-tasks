@@ -11,7 +11,7 @@ public class TemperatureService {
         TemperatureUnit from = TemperatureUnit.fromString(fromUnit);
         TemperatureUnit to = TemperatureUnit.fromString(toUnit);
 
-        // Convert to Celsius first, then to target unit
+        
         double celsius = toCelsius(from, value);
         return fromCelsius(to, celsius);
     }
